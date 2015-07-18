@@ -4,4 +4,8 @@
 	<properties fileName="config.properties"/>
 	<properties fileName="message.properties"/>
 	<properties fileName="syslog.properties"/>
+	<properties fileName="admin.properties"/>
+	<properties fileName="user.properties"/>
+	<properties fileName="common.properties"/>
+	
 </configuration>

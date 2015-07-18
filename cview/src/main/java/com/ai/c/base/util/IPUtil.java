@@ -7,14 +7,17 @@ import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
+
 /**
- * @author zouning
- * @time 2014-7-29 下午11:21:29
- * @修改获取真实IP地址信息的方法
+ * @author LiuQianMIng
+ * @time 2015-01-06 下午15:55:29
+ * 
  */
 
 public final class IPUtil {
-	public static final String getLocalhostIP(HttpServletRequest request) {
+	private static final Logger logger = Logger.getLogger(IPUtil.class);
+	public static final String getLocalhostIP() {
 		StringBuilder sb = new StringBuilder();
 		try {    	
 			Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); 
@@ -29,7 +32,7 @@ public final class IPUtil {
 						}             }     
 				}   
 			} catch (SocketException e) { 
-				
+				logger.error(e.toString());
 			}   
 		return sb.toString();
 	}
@@ -39,7 +42,7 @@ public final class IPUtil {
 		 */
 		 String clientIp = request.getHeader("X-Forwarded-For");    
 		 if (clientIp == null || clientIp.length() == 0 || "unknown".equalsIgnoreCase(clientIp)) {   
-			 clientIp = request.getHeader("X-Real-IP");  
+			 clientIp = request.getHeader("X-Real-IP");   
 		  }   
 		  if (clientIp == null || clientIp.length() == 0 || "unknown".equalsIgnoreCase(clientIp)) {   
 			  clientIp = request.getHeader("Proxy-Client-IP");   
@@ -80,54 +83,4 @@ public final class IPUtil {
 			}
 			return clientIp;
 	}
-	/**
-	 * 获取真实IP地址
-	 * 
-	 * @param request
-	 * @return
-	 */
-	public static String getClinetIpByReq(HttpServletRequest request) {
-		// 获取客户端ip地址
-		String clientIp = request.getHeader("x-forwarded-for");
-
-		if (clientIp == null || clientIp.length() == 0 || "unknown".equalsIgnoreCase(clientIp)) {
-			clientIp = request.getHeader("Proxy-Client-IP");
-		}
-		if (clientIp == null || clientIp.length() == 0 || "unknown".equalsIgnoreCase(clientIp)) {
-			clientIp = request.getHeader("WL-Proxy-Client-IP");
-		}
-		if (clientIp == null || clientIp.length() == 0 || "unknown".equalsIgnoreCase(clientIp)) {
-			clientIp = request.getRemoteAddr();
-		}
-		/*
-		 * 对于获取到多ip的情况下，找到公网ip.
-		 */
-		String sIP = null;
-		if (clientIp != null && clientIp.indexOf("unknown") == -1 && clientIp.indexOf(",") > 0) {
-			String[] ipsz = clientIp.split(",");
-			sIP = ipsz[0].trim();
-//			for (int i = 0; i < ipsz.length; i++) {
-//				if (!isInnerIP(ipsz[i].trim())) {
-//					sIP = ipsz[i].trim();
-//					break;
-//				}
-//			}
-//			/*
-//			 * 如果多ip都是内网ip，则取第一个ip.
-//			 */
-//			if (null == sIP) {
-//				sIP = ipsz[0].trim();
-//			}
-			clientIp = sIP;
-		}
-		if (clientIp != null && clientIp.indexOf("unknown") != -1) {
-			clientIp = clientIp.replaceAll("unknown,", "");
-			clientIp = clientIp.trim();
-		}
-		if ("".equals(clientIp) || null == clientIp) {
-			clientIp = "127.0.0.1";
-		}
-		return clientIp;
-	}
-
 }

@@ -41,10 +41,10 @@
 <body class="body_bak">
 <div class="errorbody">
 	<div class="errorDiv">
-		<img src="<%=path %>/images/common/error.png"/>
+		<img src="<%=path %>/resources/images/common/error.png"/>
 	</div>
 	<div class="backhomeDiv">
-		<a href="<%=path%>/cindex.jsp"><img src="<%=path %>/images/common/backhome.png"/></a>
+		<a href="<%=path%>/cindex.jsp"><img src="<%=path %>/resources/images/common/backhome.png"/></a>
 	</div>
 </div>
 </body>

@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+encoding//src/main/resources/admin.properties=UTF-8
 encoding//src/main/resources/app.config.xml=UTF-8
 encoding//src/main/resources/common.properties=UTF-8
 encoding//src/main/resources/message.properties=UTF-8

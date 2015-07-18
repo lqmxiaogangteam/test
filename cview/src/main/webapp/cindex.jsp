@@ -17,38 +17,7 @@ $(function(){
 });
 </script>
 <body>
-	<div class="top_context">
-		<div class="w_990">
-			<div class="top_menu">
-				<ul class="top_ul">
-					<li>
-						<a onclick="location.href='<%=path %>/homePage/home/login'">登录</a>
-						<b>|</b>
-						<a>注册</a>
-					</li>
-					<li>
-						<a>我的订单</a>
-						<b>|</b>
-						<a>个人中心</a>
-					</li>
-				</ul>
-			</div>
-			<a href="#" class="back_home">首页</a>
-		</div>
-	</div>
-	
-	<div class="header">
-		<div class="w_990 header_content">
-			<a class="logo" href="#"></a>
-			<ul class="menu" id="menu">
-				<li><a href="#">首页</a></li>
-				<li><a href="#">恒分</a></li>
-				<li><a href="#">富分</a></li>
-				<li><a href="#">个人中心</a></li>
-				<li><a href="#">帮助中心</a></li>
-			</ul>
-		</div>
-	</div>
+	<%@include file="/WEB-INF/pages/include/head.jsp"%>
 	
 	<div class="w_990 content">
 		<div class="search_con">

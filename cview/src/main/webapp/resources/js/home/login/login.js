@@ -103,7 +103,7 @@ var login = {
 					}else{
 						$.cookie("user_name_remember","");
 					}
-					location.href = cview.path + "/loginPage/home/loginIn";
+					location.href = cview.path + "/base/userManage/manageHome";
 				} else {
 					$("#error_Message").css("display", "block");
 					$("#error_content").html(data.returnObj||'用户名或密码不正确'); 
